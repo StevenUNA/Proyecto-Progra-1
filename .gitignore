@@ -63,6 +63,16 @@ vcpkg_installed/
 # debug information files
 *.dwo
 
+
+# Archivos temporales de compilación
+*.o
+*.exe
+*.out
+
+# Archivos de configuración local de ZinjaI
+.zinjai/
+*.zpro
+
 # test output & cache
 Testing/
 .cache/
