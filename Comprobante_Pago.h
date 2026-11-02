@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include "Empleado.h"
 
 using namespace std;
 class Comprobante_Pago {
@@ -28,7 +29,7 @@ private:
 	double salario_bruto;
 	double deducciones;
 	Empleado *empleado;
-	Departamento departamento;
+	Departamento *departamento;
 	
 };
 
