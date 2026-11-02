@@ -10,9 +10,14 @@ Comprobante_Pago::Comprobante_Pago() {
 }
 
 Comprobante_Pago::Comprobante_Pago( int id, string fecha, double salario_bruto, double deducciones, Empleado *empleado, Departamento *departamento){
-	
+	this -> id=id;
+	this -> fecha=fecha; 
+	this -> salario_bruto=salario_bruto;
+	this -> deducciones=deducciones;
+	this -> empleado = new empleado (empleado);
+	this-> departamento = new departamento (departamento);
 }
 
 Comprobante_Pago::~Comprobante_Pago() {
-	
+	cout << "Borrando comprobante de pago\n";
 }
