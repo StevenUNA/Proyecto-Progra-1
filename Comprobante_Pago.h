@@ -4,7 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include "Empleado.h"
-#include "Dpeartamento.h"
+#include "Departamento.h"
 
 using namespace std;
 class Comprobante_Pago {
@@ -21,7 +21,7 @@ public:
 	string getFecha();
 	double getSalario_bruto();
 	double getDeducciones();
-	string toString;
+	string toString ();
 	
 	~Comprobante_Pago();
 private:
