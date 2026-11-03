@@ -14,8 +14,8 @@ Comprobante_Pago::Comprobante_Pago( int id, string fecha, double salario_bruto, 
 	this -> fecha=fecha; 
 	this -> salario_bruto=salario_bruto;
 	this -> deducciones=deducciones;
-	this -> empleado = new empleado (empleado);
-	this-> departamento = new departamento (departamento);
+	this -> empleado = empleado;
+	this-> departamento = departamento;
 }
 
 Comprobante_Pago::~Comprobante_Pago() {
