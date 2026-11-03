@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include "Empleado.h"
+#include "Dpeartamento.h"
 
 using namespace std;
 class Comprobante_Pago {
