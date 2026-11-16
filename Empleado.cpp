@@ -1,14 +1,20 @@
 #include "Empleado.h"
+#include <string>
 
 Empleado::Empleado() {
 	this->id="N/A";
 	this->nombre="N/A";
+	this->salarioBruto=0.0;
+	this->horasExtras=0.0;
 	this->seguro=false;
+	this->salarioNeto=0.0;
 }
 
-Empleado::Empleado (string id, string nombre, bool seguro) {
+Empleado::Empleado (string id, string nombre, double salarioBruto, int horasExtras, bool seguro) {
 	this->id=id;
 	this->nombre=nombre;
+	this->salarioBruto=salarioBruto;
+	this->horasExtras=horasExtras;
 	this->seguro=seguro;
 	
 }
@@ -29,9 +35,13 @@ void Empleado::setnombre (string nombre) {
 }
 
 
-
 void Empleado::setseguro (bool seguro) {
 	this->seguro=seguro;
+}
+
+void Empleado::sethorasExtras (int horasExtras) {
+	this->horasExtras=horasExtras;
+	
 }
 
 string Empleado::getid ( ) {
@@ -42,11 +52,19 @@ string Empleado::getnombre ( ) {
 	return nombre;
 }
 
-double Empleado::getsalarioBase ( ) {
-	return salarioBase;
+
+
+double Empleado::getsalarioNeto ( ) {
+	return salarioNeto;
 }
 
+double Empleado::getsalarioBruto ( ) {
+	return salarioBruto;
+}
 
+int Empleado::gethorasExtras ( ) {
+	return horasExtras;
+}
 
 bool Empleado::getseguro ( ) {
 	return seguro;
@@ -58,12 +76,9 @@ string Empleado::toString ( ) {
 	
 	s << "ID: " << id << endl;
 	s << "Nombre: " << nombre << endl;
-	s << "Salario Base: " << salarioBase << endl;
+	s << "Salario Bruto: " << salarioBruto << endl;
+	s << "Horas extras" << horasExtras << endl;
 	s << "Seguro: " << seguro_str << endl;
 	
 	return s.str();
 }
-
-
-
-
