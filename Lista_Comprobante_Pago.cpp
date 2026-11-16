@@ -74,7 +74,6 @@ void Lista_Comprobante_Pago::modificarComprobante_Pago(int id) {
 	if (dato != nullptr) {
 		string fecha;
 		double salario_bruto;
-		double deducciones;
 		
 		cout << "Nueva fecha: ";
 		cin >> fecha;
@@ -82,12 +81,9 @@ void Lista_Comprobante_Pago::modificarComprobante_Pago(int id) {
 		cout << "Nuevo salario bruto: ";
 		cin >> salario_bruto;
 		
-		cout << "Nuevas deducciones: ";
-		cin >> deducciones;
 		
 		dato->setFecha(fecha);
 		dato->setSalario_bruto(salario_bruto);
-		dato->setDeducciones(deducciones);
 		
 		cout << "Comprobante modificado\n";
 	} else {
