@@ -97,17 +97,9 @@ double Enfermero::calcular_salarioNeto ( ) {
 	//Calculo de salario neto
 	salarioNeto= salarioBruto - impuestoRenta - ImpuestoSocial - fcl - rop;
 	
-	cout << "---Desglose de salario---\n";
-	cout << "Salario bruto: " << salarioBruto << "colones\n";
-	cout << "Turno (20% de bonificacion): " << turno << endl;
-	cout << "Horas extra (50% de bonificacion por guardia): " << horasExtras << endl;
-	cout << "Impuesto Social (SEM 5.50% + IVM 4.33% + Banco Popular 1.00%): " << ImpuestoSocial << "colones\n";
-	cout << "Fondo de Capitalizacion (FCL 1.5%): " << fcl << "colones\n";
-	cout << "Regimen Obligatorio De Pensiones Complementarias: " << rop << "colones\n";
-	cout << "Salario Neto: " << salarioNeto << " colones\n";
+	
 	return salarioNeto;
 }
 
-}
 
 
