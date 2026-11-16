@@ -21,8 +21,11 @@ public:
 	string getFecha();
 	double getSalario_bruto();
 	double getDeducciones();
-	string toString ();
+	string toString();
 	
+	void autoGuardar (ofstream & salida) override;
+	Comprobante_Pago* autoLeer(ifstream& entrada) override;
+
 	~Comprobante_Pago();
 private:
 	int id;
