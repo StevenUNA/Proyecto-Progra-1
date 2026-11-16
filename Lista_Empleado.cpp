@@ -129,3 +129,22 @@ string Lista_Empleado::ListarEmpleado ( ) {
 	}
 }
 
+Empleado * Lista_Empleado::buscarEmpleado (string id) {
+	actual=cabeza;
+	if(vacio()){
+		return nullptr; 
+	}
+	else{
+		bool n=true;
+		while(actual != NULL && n==true){ 
+			if(actual->getDato()->getid()==id){
+				n=false;
+				return actual->getDato(); 
+			}
+			actual = actual->getSig(); 		
+		}
+		if(actual == NULL) {
+			return nullptr;
+		}
+	}
+}
