@@ -10,6 +10,8 @@ public:
 	void insertarEmpleado(Empleado *dato);
 	int eliminarEmpleado (string id);
 	int modificarEmpleado (string id, Empleado *dato);
+	Empleado* buscarEmpleado (string id);
+	
 	string consultarEmpleado (string id);
 	string ListarEmpleado ();
 private:
@@ -17,4 +19,3 @@ private:
 };
 
 #endif
-
