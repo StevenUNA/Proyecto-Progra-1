@@ -57,6 +57,32 @@ double Comprobante_Pago::getDeducciones ( ) {
 	return deducciones;
 }
 
+void Comprobante_Pago::autoGuardar(ofstream & salida){
+	cout<< "<<Guardando>>" <<endl;
+	cout<< toString() <<endl;
+	salida <<<< id  << endl
+		<< fecha << endl
+		<< salario_bruto << endl
+		<< deducciones << endl;
+}
+
+Comprobante_Pago* Comprobante_Pago::autoLeer(ifstream & entrada){
+	string fecha;
+	int id;
+	double salario_bruto, deducciones;
+	
+	
+	if (!(entrada >> id)) { return NULL; }
+	if (!(entrada >> fecha)) { return NULL; }
+	if (!(entrada >> salario_bruto)){ return NULL; }
+	if (!(entrada >> deducciones)){ return NULL; }
+	
+	if (!(entrada >> esp)) { return NULL; }
+	cout << "   --Cargando registro" << endl;
+	return new Medico(id, fecha, salario_bruto, deducciones) ;
+}
+
+
 
 string Comprobante_Pago::toString(){
 	stringstream s;
