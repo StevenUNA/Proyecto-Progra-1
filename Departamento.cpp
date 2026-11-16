@@ -1,21 +1,48 @@
+#include "Departamento.h"
 
-    if (!getline(entrada, codigo)) {
-        return NULL;
-    }
 
-    if (!getline(entrada, nombre)) {
-        return NULL;
-    }
-
-    if (!(entrada >> cantidad)) {
-        return NULL;
-    }
-
-    entrada.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    Departamento *nuevo = new Departamento(codigo, nombre);
-
-    nuevo->listaPuestos.cargar(entrada, cantidad);
-
-    return nuevo;
+string Departamento::toString ( ) {
+	stringstream s;
+	return s.str();
 }
+
+string Departamento::getCodigo ( ) {
+	
+}
+
+string Departamento::getNombre ( ) {
+	
+}
+
+void Departamento::agregarPuesto (Puesto * dato) {
+	
+}
+
+int Departamento::eliminarPuesto (string codigo) {
+	
+}
+
+string Departamento::consultarPuesto (string codigo) {
+	
+}
+
+string Departamento::listarPuestos ( ) {
+	
+}
+
+void Departamento::autoGuardar (ofstream & salida) {
+	
+}
+
+Departamento * Departamento::autoLeer (ifstream & entrada) {
+	
+}
+
+Departamento::Departamento (string codigo, string nombre, Lista_Puesto listaPuestos) {
+	
+}
+
+Departamento::~Departamento ( ) {
+	
+}
+
