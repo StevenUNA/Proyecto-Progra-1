@@ -1,3 +1,4 @@
+
 #include "Lista_Departamento.h"
 #include <iostream>
 #include <fstream>
@@ -23,11 +24,22 @@ bool Lista_Departamento::estaVacia() {
 }
 
 void Lista_Departamento::insertar(Departamento* departamento) {
+
+    if (departamento == nullptr) {
+        return;
+    }
+
+    if (buscar(departamento->getCodigo()) != nullptr) {
+        delete departamento;
+        return;
+    }
+
     Nodo_Departamento* nuevo = new Nodo_Departamento(departamento);
 
     if (estaVacia()) {
         primero = nuevo;
-    } else {
+    }
+    else {
         Nodo_Departamento* actual = primero;
 
         while (actual->getSiguiente() != nullptr) {
@@ -38,11 +50,13 @@ void Lista_Departamento::insertar(Departamento* departamento) {
     }
 }
 
-Departamento* Lista_Departamento::buscar(int id) {
+Departamento* Lista_Departamento::buscar(string codigo) {
+
     Nodo_Departamento* actual = primero;
 
     while (actual != nullptr) {
-        if (actual->getDato()->getId() == id) {
+
+        if (actual->getDato()->getCodigo() == codigo) {
             return actual->getDato();
         }
 
@@ -52,25 +66,34 @@ Departamento* Lista_Departamento::buscar(int id) {
     return nullptr;
 }
 
-bool Lista_Departamento::eliminar(int id) {
+bool Lista_Departamento::eliminar(string codigo) {
+
     if (primero == nullptr) {
         return false;
     }
 
-    if (primero->getDato()->getId() == id) {
+    if (primero->getDato()->getCodigo() == codigo) {
+
         Nodo_Departamento* temporal = primero;
         primero = primero->getSiguiente();
+
         delete temporal;
+
         return true;
     }
 
     Nodo_Departamento* actual = primero;
 
     while (actual->getSiguiente() != nullptr) {
-        if (actual->getSiguiente()->getDato()->getId() == id) {
+
+        if (actual->getSiguiente()->getDato()->getCodigo() == codigo) {
+
             Nodo_Departamento* temporal = actual->getSiguiente();
+
             actual->setSiguiente(temporal->getSiguiente());
+
             delete temporal;
+
             return true;
         }
 
@@ -81,24 +104,30 @@ bool Lista_Departamento::eliminar(int id) {
 }
 
 void Lista_Departamento::mostrar() {
+
     Nodo_Departamento* actual = primero;
 
     while (actual != nullptr) {
-        actual->getDato()->mostrar();
+
+        cout << actual->getDato()->toString() << endl;
+
         actual = actual->getSiguiente();
     }
 }
 
 void Lista_Departamento::autoGuardar() {
+
     ofstream archivo("departamentos.txt");
+
+    if (!archivo.is_open()) {
+        return;
+    }
 
     Nodo_Departamento* actual = primero;
 
     while (actual != nullptr) {
-        Departamento* departamento = actual->getDato();
 
-        archivo << departamento->getId() << endl;
-        archivo << departamento->getNombre() << endl;
+        actual->getDato()->autoGuardar(archivo);
 
         actual = actual->getSiguiente();
     }
@@ -107,22 +136,24 @@ void Lista_Departamento::autoGuardar() {
 }
 
 void Lista_Departamento::autoLeer() {
+
     ifstream archivo("departamentos.txt");
 
     if (!archivo.is_open()) {
         return;
     }
 
-    int id;
-    string nombre;
+    while (true) {
 
-    while (archivo >> id) {
-        archivo.ignore();
-        getline(archivo, nombre);
+        Departamento* departamento = Departamento::autoLeer(archivo);
 
-        Departamento* departamento = new Departamento(id, nombre);
+        if (departamento == nullptr) {
+            break;
+        }
+
         insertar(departamento);
     }
 
     archivo.close();
 }
+
