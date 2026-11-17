@@ -2,28 +2,33 @@
 #ifndef PUESTO_H
 #define PUESTO_H
 
-#include <string>
-
+#include <iostream>
+#include <sstream>
+#include <fstream>
 using namespace std;
 
 class Puesto {
 private:
-    int codigo;
+    string codigo;
     string nombre;
 
 public:
     Puesto();
-    Puesto(int codigo, string nombre);
+    Puesto(string codigo, string nombre);
     ~Puesto();
 
-    int getCodigo();
+    string getCodigo();
     string getNombre();
 
-    void setCodigo(int codigo);
+    void setCodigo(string codigo);
     void setNombre(string nombre);
-
+	
+	void autoGuardar (ofstream & salida) ;
+	static Puesto* autoLeer(ifstream& entrada) ;
+	
     string toString();
 };
 
 #endif
+
 
