@@ -1,48 +1,74 @@
+
 #include "Departamento.h"
 
+using namespace std;
 
-string Departamento::toString ( ) {
-	stringstream s;
-	return s.str();
+Departamento::Departamento(string codigo, string nombre) {
+    this->codigo = codigo;
+    this->nombre = nombre;
 }
 
-string Departamento::getCodigo ( ) {
-	
+Departamento::~Departamento() {
 }
 
-string Departamento::getNombre ( ) {
-	
+string Departamento::getCodigo() {
+    return codigo;
 }
 
-void Departamento::agregarPuesto (Puesto * dato) {
-	
+string Departamento::getNombre() {
+    return nombre;
 }
 
-int Departamento::eliminarPuesto (string codigo) {
-	
+void Departamento::agregarPuesto(Puesto* dato) {
+    listaPuestos.insertar(dato);
 }
 
-string Departamento::consultarPuesto (string codigo) {
-	
+int Departamento::eliminarPuesto(string codigo) {
+    return listaPuestos.eliminar(stoi(codigo)) ? 1 : 0;
 }
 
-string Departamento::listarPuestos ( ) {
-	
+string Departamento::consultarPuesto(string codigo) {
+    Puesto* puesto = listaPuestos.buscar(stoi(codigo));
+
+    if (puesto == nullptr) {
+        return "Puesto no encontrado";
+    }
+
+    return puesto->toString();
 }
 
-void Departamento::autoGuardar (ofstream & salida) {
-	
+string Departamento::listarPuestos() {
+    return listaPuestos.mostrar();
 }
 
-Departamento * Departamento::autoLeer (ifstream & entrada) {
-	
+string Departamento::toString() {
+    stringstream s;
+
+    s << "Codigo: " << codigo << endl;
+    s << "Nombre: " << nombre << endl;
+    s << "Puestos:" << endl;
+    s << listarPuestos();
+
+    return s.str();
 }
 
-Departamento::Departamento (string codigo, string nombre, Lista_Puesto listaPuestos) {
-	
+void Departamento::autoGuardar(ofstream& salida) {
+    salida << codigo << endl;
+    salida << nombre << endl;
 }
 
-Departamento::~Departamento ( ) {
-	
+Departamento* Departamento::autoLeer(ifstream& entrada) {
+    string codigo;
+    string nombre;
+
+    if (!getline(entrada, codigo)) {
+        return nullptr;
+    }
+
+    if (!getline(entrada, nombre)) {
+        return nullptr;
+    }
+
+    return new Departamento(codigo, nombre);
 }
 
