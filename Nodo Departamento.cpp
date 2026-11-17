@@ -1,4 +1,5 @@
-#include "Nodo_Departamento.h"
+
+#include "Nodo Departamento.h"
 
 Nodo_Departamento::Nodo_Departamento(Departamento* dato) {
     this->dato = dato;
