@@ -1,15 +1,14 @@
-
 #include "Puesto.h"
 #include <sstream>
 
 using namespace std;
 
 Puesto::Puesto() {
-    codigo = 0;
+    codigo = "";
     nombre = "";
 }
 
-Puesto::Puesto(int codigo, string nombre) {
+Puesto::Puesto(string codigo, string nombre) {
     this->codigo = codigo;
     this->nombre = nombre;
 }
@@ -17,7 +16,7 @@ Puesto::Puesto(int codigo, string nombre) {
 Puesto::~Puesto() {
 }
 
-int Puesto::getCodigo() {
+string Puesto::getCodigo() {
     return codigo;
 }
 
@@ -25,7 +24,7 @@ string Puesto::getNombre() {
     return nombre;
 }
 
-void Puesto::setCodigo(int codigo) {
+void Puesto::setCodigo(string codigo) {
     this->codigo = codigo;
 }
 
@@ -41,3 +40,21 @@ string Puesto::toString() {
 
     return ss.str();
 }
+
+void Puesto::autoGuardar (ofstream & salida) {
+	cout << "--Guardando--" << endl;
+	cout << toString() << endl;
+	salida << codigo << endl
+	<< nombre << endl;
+}
+
+Puesto * Puesto::autoLeer (ifstream & entrada) {
+	string codigo, nom;
+	
+	
+	if (!(entrada >> codigo)) { return NULL; }
+	if (!(entrada >> nom)) { return NULL; }
+	cout << "   --Cargando registro" << endl;
+	return new Puesto(codigo,nom);
+}
+
