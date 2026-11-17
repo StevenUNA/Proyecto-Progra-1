@@ -1,20 +1,22 @@
+#include "Nodo Puesto.h"
+
 Nodo_Puesto::Nodo_Puesto(Puesto* dato) {
-    this->dato = dato;
-    siguiente = nullptr;
+	this->dato = dato;
+	siguiente = nullptr;
 }
 
 Nodo_Puesto::~Nodo_Puesto() {
-    delete dato;
+	delete dato;
 }
 
 Puesto* Nodo_Puesto::getDato() {
-    return dato;
+	return dato;
 }
 
 Nodo_Puesto* Nodo_Puesto::getSiguiente() {
-    return siguiente;
+	return siguiente;
 }
 
 void Nodo_Puesto::setSiguiente(Nodo_Puesto* siguiente) {
-    this->siguiente = siguiente;
+	this->siguiente = siguiente;
 }
