@@ -1,11 +1,7 @@
 
 #ifndef LISTA_DEPARTAMENTO_H
 #define LISTA_DEPARTAMENTO_H
-
-#include "Nodo_Departamento.h"
-#include <string>
-
-using namespace std;
+#include "Nodo Departamento.h"
 
 class Lista_Departamento {
 private:
@@ -16,15 +12,10 @@ public:
     ~Lista_Departamento();
 
     bool estaVacia();
-
     void insertar(Departamento* departamento);
     Departamento* buscar(string codigo);
-    bool eliminar(string codigo);
-
+    bool eliminar(string id);
     void mostrar();
-
-    void autoGuardar();
-    void autoLeer();
 };
 
 #endif
