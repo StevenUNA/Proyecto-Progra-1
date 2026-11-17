@@ -1,4 +1,3 @@
-
 #include "Nodo_Departamento.h"
 
 Nodo_Departamento::Nodo_Departamento(Departamento* dato) {
