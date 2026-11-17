@@ -3,6 +3,9 @@
 #define LISTA_DEPARTAMENTO_H
 
 #include "Nodo_Departamento.h"
+#include <string>
+
+using namespace std;
 
 class Lista_Departamento {
 private:
@@ -13,10 +16,13 @@ public:
     ~Lista_Departamento();
 
     bool estaVacia();
+
     void insertar(Departamento* departamento);
-    Departamento* buscar(int id);
-    bool eliminar(int id);
+    Departamento* buscar(string codigo);
+    bool eliminar(string codigo);
+
     void mostrar();
+
     void autoGuardar();
     void autoLeer();
 };
