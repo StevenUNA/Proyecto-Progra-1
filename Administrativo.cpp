@@ -34,23 +34,22 @@ void Administrativo::autoGuardar (ofstream & salida) {
 }
 
 Empleado * Administrativo::autoLeer (ifstream & entrada) {
-	string id, nom, turno, esp;
-	int  extras;
+	string id, nom, turno;
+	int extras;
 	double salarioNeto, salarioBruto;
 	bool seguro;
 	
 	
 	if (!(entrada >> id)) { return NULL; }
 	if (!(entrada >> nom)) { return NULL; }
-	if (!(entrada >> seguro)){ return NULL; }
-	if (!(entrada >> salarioBruto)){ return NULL; }
-	if (!(entrada >> salarioNeto)){ return NULL; }
-	if (!(entrada >> extras)){ return NULL; }
-	if (!(entrada >> esp)) { return NULL; }
+	if (!(entrada >> turno)) { return NULL; }
+	if (!(entrada >> seguro)) { return NULL; }
+	if (!(entrada >> salarioBruto)) { return NULL; }
+	if (!(entrada >> extras)) { return NULL; }
+	if (!(entrada >> salarioNeto)) { return NULL; }
 	cout << "   --Cargando registro" << endl;
-	return new Administrativo(id, nom, turno, salarioBruto, horasExtras, seguro);
+	return new Administrativo(id, nom, turno, salarioBruto, extras, seguro);
 }
-
 double Administrativo::calcular_salarioNeto ( ) {
 	//Datos Base
 	double salarioBruto=Administrativo::getsalarioBruto();
@@ -65,8 +64,7 @@ double Administrativo::calcular_salarioNeto ( ) {
 	double ImpuestoSocial= salarioBruto * 0.1083;
 	double impuestoRenta=0.0;
 	
-	//Suma de bonififcaciones al salario bruto
-	salarioBruto+=bonificacion_turno+bonificacion_horasExtras;
+
 	
 	//Calculo de impuesto de renta
 	double excedente=0.0;
@@ -94,6 +92,7 @@ double Administrativo::calcular_salarioNeto ( ) {
 	//Calculo de salario neto
 	salarioNeto= salarioBruto - impuestoRenta - ImpuestoSocial - fcl - rop;
 	
+	salarioNeto+=bonificacion_turno+bonificacion_horasExtras;
 	
 	return salarioNeto;
 }
