@@ -6,6 +6,7 @@ Nodo_Empleado::Nodo_Empleado (Empleado * dato) {
 }
 
 Nodo_Empleado::~Nodo_Empleado ( ) {
+	delete dato;
 }
 
 
@@ -24,4 +25,5 @@ void Nodo_Empleado::setSig (Nodo_Empleado * Sig) {
 Nodo_Empleado * Nodo_Empleado::getSig ( ) {
 	return this->sig;
 }
+
 
