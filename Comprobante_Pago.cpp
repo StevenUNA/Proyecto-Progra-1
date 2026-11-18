@@ -12,10 +12,15 @@ Comprobante_Pago::Comprobante_Pago() {
 Comprobante_Pago::Comprobante_Pago( int id, string fecha, double salario_bruto, double salario_neto, Empleado *empleado, Departamento *departamento){
 	this -> id=id;
 	this -> fecha=fecha; 
-	this -> salario_bruto=empleado->getsalarioBruto();
-	this -> salario_neto=empleado->getsalarioNeto();
+	this -> salario_bruto=salario_bruto;
+	this -> salario_neto=salario_neto;
 	this -> empleado = empleado;
 	this-> departamento = departamento;
+	
+	if (empleado != nullptr) {
+		this -> salario_bruto=empleado->getsalarioBruto();
+		this -> salario_neto=empleado->getsalarioNeto();
+	}
 }
 
 Comprobante_Pago::~Comprobante_Pago() {
@@ -38,7 +43,7 @@ void Comprobante_Pago::setSalario_bruto (double salario_bruto) {
 }
 
 void Comprobante_Pago::setSalario_neto (double salario_neto) {
-	this -> salario_neto=empleado->getsalarioNeto();
+	this -> salario_neto=salario_neto;
 }
 
 int Comprobante_Pago::getId ( ) {
@@ -90,7 +95,7 @@ Comprobante_Pago* Comprobante_Pago::autoLeer(ifstream& entrada, Lista_Empleado &
 	if (!(entrada >> Codigo_Departamento)){ return NULL; }
 	
 	Empleado *empleado= empleados.buscarEmpleado(ID_Empleado);
-	Departamento *departamento= departamentos.buscarDepartamento(Codigo_Departamento);
+	Departamento *departamento= departamentos.buscar(Codigo_Departamento);
 	
 	cout << "   --Cargando registro" << endl;
 	return new Comprobante_Pago(id, fecha, salario_bruto, salario_neto, empleado, departamento) ;
@@ -106,14 +111,14 @@ string Comprobante_Pago::toString(){
 	
 	(empleado!=nullptr)? s << "Empleado: " << empleado->toString() << endl :  s << "Empleado: N/A" << endl;
 	(departamento!=nullptr)? s << "Departamento: " << departamento->toString() << endl : s << "Departamento: N/A" << endl;
-
-	calculardeducciones(empleado);
+	
+	s << calculardeducciones(empleado);
 	
 	return s.str();
 }
 
 
-void Comprobante_Pago::calculardeducciones (Empleado * empleado) {
+string Comprobante_Pago::calculardeducciones (Empleado * empleado) {
 	//Datos Base
 	double salarioBruto=empleado->getsalarioBruto();
 	double salarioNeto=empleado->getsalarioNeto();
