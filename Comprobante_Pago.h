@@ -4,7 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include "Lista_Empleado.h"
-#include "Lista_Departamento.h"
+#include "Lista Departamento.h"
 
 using namespace std;
 class Comprobante_Pago {
@@ -19,13 +19,14 @@ public:
 	
 	int getId();
 	string getFecha();
-	double getSalario_bruto();	double getSalario_neto();
+	double getSalario_bruto();	
+	double getSalario_neto();
 	string toString();
 	
 	void autoGuardar (ofstream & salida) ;
-	Comprobante_Pago* autoLeer(ifstream& entrada, Lista_Empleado &empleados, Lista_Departamento &departamentos) ;
+	static Comprobante_Pago* autoLeer(ifstream& entrada, Lista_Empleado &empleados, Lista_Departamento &departamentos) ;
 	
-	void calculardeducciones(Empleado *empleado);
+	string calculardeducciones(Empleado *empleado);
 	
 	~Comprobante_Pago();
 private:
@@ -38,3 +39,4 @@ private:
 };
 
 #endif
+
