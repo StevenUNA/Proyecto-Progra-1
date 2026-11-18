@@ -1,13 +1,10 @@
-
 #include "Departamento.h"
 
 using namespace std;
 
-Departamento::Departamento(string codigo, string nombre, Lista_Puesto listaPuestos) {
+Departamento::Departamento(string codigo, string nombre) {
 	this->codigo = codigo;
 	this->nombre = nombre;
-	this->listaPuestos = listaPuestos;
-	
 }
 
 Departamento::~Departamento() {
@@ -66,7 +63,6 @@ void Departamento::autoGuardar(ofstream& salida) {
 Departamento* Departamento::autoLeer(ifstream& entrada) {
 	string codigo;
 	string nombre;
-	Lista_Puesto listaPuestos;
 	
 	if (!getline(entrada, codigo)) {
 		return nullptr;
@@ -76,6 +72,6 @@ Departamento* Departamento::autoLeer(ifstream& entrada) {
 		return nullptr;
 	}
 	
-	return new Departamento(codigo, nombre, listaPuestos);
+	return new Departamento(codigo, nombre);
 }
 
