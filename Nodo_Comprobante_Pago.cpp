@@ -12,6 +12,7 @@ Nodo_Comprobante_Pago::Nodo_Comprobante_Pago(Comprobante_Pago *dato) {
 
 Nodo_Comprobante_Pago::~Nodo_Comprobante_Pago() {
 	cout << "Borrando nodo comprobante de pago\n";
+	delete dato;
 }
 
 void Nodo_Comprobante_Pago::setDato(Comprobante_Pago *dato) {
@@ -29,4 +30,3 @@ Comprobante_Pago* Nodo_Comprobante_Pago::getDato() {
 Nodo_Comprobante_Pago* Nodo_Comprobante_Pago::getSig() {
 	return sig;
 }
-
