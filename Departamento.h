@@ -9,7 +9,7 @@ using namespace std;
 class Departamento {
 public:
 	
-	Departamento(string codigo, string nombre, Lista_Puesto listaPuestos);
+	Departamento(string codigo, string nombre); 
 	~Departamento();
 	string getCodigo();
 	string getNombre();
