@@ -9,6 +9,7 @@ Issac Benavides Umaña: 2-0890-0449
 
 
 -----------Instrucciones de compilación-----------
+
 Empleado: Se utiliza herencia para tres clases derivadas (Medico, Enfermero y Administrativo). En esta clase se calcula el salario neto de los empleados del hospital, considerando deducciones y bonificaciones
 según el tipo de empleado. La clase Empleado tiene su respectiva lista enlazada.
 
