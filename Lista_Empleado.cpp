@@ -72,24 +72,19 @@ int Lista_Empleado::modificarEmpleado (string id, Empleado * dato) {
 	if(vacio()){
 		return 0;
 	}
-	else{
-		bool n = true;
-		while(actual!=NULL && n==true){ 
-			
-			if(actual->getDato()->getid()==id){ 
-				n=false;
-				actual->setDato(dato);
+	
+	while(actual!=NULL){ 
+		if(actual->getDato()->getid()==id){ 
+			if(actual->getDato()!=dato){
+				delete actual->getDato();
 			}
-			actual=actual->getSig(); 
-		}
-		if(actual==NULL){
-			return -1;
-		}
-		else{
+			actual->setDato(dato);
 			return 1;
 		}
-		
+		actual=actual->getSig(); 
 	}
+	
+	return -1;
 }
 
 string Lista_Empleado::consultarEmpleado (string id) {
