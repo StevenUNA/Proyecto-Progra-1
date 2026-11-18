@@ -28,9 +28,8 @@ Estructura de archivos C++: Cada archivo tiene una cabcera .h (Dónde se declara
 
 
 -----------Guía de uso-----------
-Ejecute el programa, aparece un texto indicando que se cargaron los registros
 
-Aparece un menu con un total de 11 opciones (La opción 0 es para Salir). Seleccionar la opción deseada y digitar los datos solicitados
+Ejecute el programa, aparece un texto indicando que se cargaron los registros. Aparece un menu con un total de 11 opciones (La opción 0 es para Salir). Seleccionar la opción deseada y digitar los datos solicitados
 
 Opciones:
 
